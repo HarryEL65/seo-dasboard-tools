@@ -1,0 +1,14 @@
+
+
+<ul class="nav">
+    <li routerLinkActive="active" class="nav-item" *ngFor="let menuItem of adminMenuItems">
+        <a  [routerLink]="[menuItem.path]" class="nav-link">
+            
+            <i class="{{menuItem.class}}" aria-hidden="true"></i>
+            <p>{{menuItem.title}}</p>
+        </a>
+    </li>
+</ul>
+
+
+<router-outlet></router-outlet>

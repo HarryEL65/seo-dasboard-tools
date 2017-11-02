@@ -1,0 +1,17 @@
+:host {
+  height: 80vh;
+  width: 15%;
+  /* padding: 2px; */
+  display: inline-block;
+  float: left;
+  background: #b4daf0;
+}
+:host #toolbar {
+  height: 100%;
+  box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.3);
+  height: 98%;
+  width: 98%;
+}
+:host .nav {
+  display: inline;
+}

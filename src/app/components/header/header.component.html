@@ -1,0 +1,16 @@
+ <div *ngIf="isLoggedIn">
+ <!-- <div *ngIf="isLoggedIn"> -->
+
+  <div class="logo">
+    <li class="logo-desktop hidden-sm hidden-xs">
+        <a class="webpal-ahreh" href="http://www.webpals.com" style=""><img id="logomenureveal" src="http://www.webpals.com/wp-content/uploads/2015/12/mobile.png" alt="WebPals" class="img-responsive halfsize" width="160">
+        </a>
+    </li>
+  </div>
+  
+  <div class="login-logout float-right"> 
+    <a   class="mr-3" href="#">{{loggdedInUser}}</a>
+    <a   routerLink="logout" (click)="onLogout()">Logout</a>
+  </div>
+</div>
+
