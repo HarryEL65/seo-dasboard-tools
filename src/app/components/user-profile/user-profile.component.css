@@ -1,0 +1,14 @@
+:host .card {
+  width: 100%;
+  background: border-box;
+}
+:host .card img {
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  margin: 15px auto 0;
+  border: 4px solid snow;
+}
+:host .card .card-body {
+  marging: auto;
+}

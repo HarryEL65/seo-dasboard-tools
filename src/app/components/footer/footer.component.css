@@ -1,0 +1,12 @@
+:host {
+  position: relative;
+  height: 10vh;
+  display: inline-block;
+  width: 100%;
+  background: #baddf1;
+}
+:host div {
+  height: 100%;
+  width: 100%;
+  background: #baddf1;
+}

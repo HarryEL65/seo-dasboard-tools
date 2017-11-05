@@ -1,0 +1,17 @@
+:host {
+  width: 100vw;
+  height: 10vh;
+  /* display: inline-flex; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: #b6dbf0;
+  /* justify-content:; */
+}
+:host .logo {
+  padding-left: 30px;
+  width: 15%;
+}
+:host .login-logout {
+  padding: 30px;
+}

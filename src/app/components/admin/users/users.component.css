@@ -1,0 +1,5 @@
+:host .fa.fa-users:before {
+  content: "\F0C0";
+  font-size: large;
+  color: royalblue;
+}

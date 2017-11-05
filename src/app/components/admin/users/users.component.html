@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4><i class="fa fa-users"></i> Users</h4>
+  </div>
+  <div class="col-md-6">
+    <h5 class="text-right text-secondary">details</h5>
+  </div>
+</div>
+<!-- <pre>{{users}}</pre> -->
+<table *ngIf="users?.length > 0; else noUsers" class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <a [routerLink]="['admin/user/'+ user.key]" class="btn btn-secondary btn-sm">
+          <i class="fa fa-arrow-circle-o-right"> User details </i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noUsers >
+    <div *ngIf="!error" class="alert alert-warning" role="alert">
+        There are currently no users to display
+    </div>
+    <div *ngIf="error" class="alert alert-warning" role="alert">
+        {{error}}
+    </div>
+</ng-template>
