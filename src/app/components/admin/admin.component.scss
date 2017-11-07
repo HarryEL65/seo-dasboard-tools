@@ -1,0 +1,9 @@
+@import '../../../sass/variable';
+
+:host{
+  width: 100%;
+  height: 100px;
+  margin: 15px;
+  display: block;
+  background: $profile-bckgrd-col;
+}
