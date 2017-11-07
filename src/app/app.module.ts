@@ -1,3 +1,4 @@
+
 /*=============== Modules ==================*/
 
 /*---------------- Angular and third parties modules -------------------*/
@@ -58,6 +59,8 @@ import { AuthenticationService } from './services/authentication.service';
 
 // /*=================== guard ===========================*/
  import { AuthGuard } from './guards/authenticationGuard';
+
+
 @NgModule({
   declarations: [
     AppComponent,

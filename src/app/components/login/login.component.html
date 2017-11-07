@@ -6,11 +6,15 @@
         <div class="logo-ctnr">
           <img class="d-block mx-auto" src="/assets/img/webpals-logo.png" alt="">
         </div>
-        <h4 class="text-center">SEO Dashboard Tools Login</h4>
+        <h4 class="text-center" i18n="Header|An introduction header for this sample@@loginTitleId">SEO Dashboard Tools Login</h4>
         <form (submit)="onSubmit()">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" [(ngModel)]="email" name="email">
+            <input type="email" class="form-control" 
+              placeholder="Email" 
+              [(ngModel)]="email" 
+              name="email"
+              i18n-placeholder="placeholder|just a placeholder sample on an email input field@@emailPlaceHolderId">
           </div>
           <div class="form-group">
               <label for="password">Password</label>
