@@ -4,7 +4,7 @@
 /*---------------- Angular and third parties modules -------------------*/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
 
@@ -14,10 +14,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
- import { FlashMessagesModule } from 'angular2-flash-messages/module';
+import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
 
 /*---------------- custom modules -------------------*/
+import { AuthenticationModule } from './components/authentication/authentication.module';
 import { AppRoutingModule } from './app-routing.module';
 import { KeywordOpportunityModule } from './components/keyword-opportunity/keyword-opportunity.module';
 import { SeoAuditToolModule } from './components/seo-audit-tool/seo-audit-tool.module';
@@ -33,8 +34,8 @@ import { SharedModule } from './components/shared/shared.module';
 import { AppComponent } from './app.component';
 
 /*---------------- custom components ------------*/
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+// import { LogoutComponent } from './components/logout/logout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentAreaComponent } from './components/content-area/content-area.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -55,17 +56,18 @@ import { AdminModule } from './components/admin/admin.module';
 
 /*=================== services ===========================*/
 import { UsersService } from './services/users.service';
-import { AuthenticationService } from './services/authentication.service';
+// import { AuthenticationService } from './services/authentication.service';
 
-// /*=================== guard ===========================*/
- import { AuthGuard } from './guards/authenticationGuard';
+// // /*=================== guard ===========================*/
+//  import { AuthGuard } from './guards/authenticationGuard';
+//  import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    LogoutComponent,
+    // LoginComponent,
+    // LogoutComponent,
     HeaderComponent,
     FooterComponent,
     SideBarComponent,
@@ -74,10 +76,11 @@ import { AuthenticationService } from './services/authentication.service';
     HomeComponent,
     PageNotFoundComponentComponent,
     ContentAreaComponent,
+    // SignUpComponent,
     ],
   imports: [
     BrowserModule,
-    FormsModule,
+    // FormsModule,
     FlashMessagesModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
@@ -89,9 +92,10 @@ import { AuthenticationService } from './services/authentication.service';
     SharedModule,
     Ng2BreadcrumbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'wp-dasboard-app'),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AuthenticationModule
   ],
-  providers: [AngularFireDatabase, UsersService, AuthenticationService, AuthGuard],
+  providers: [AngularFireDatabase, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
