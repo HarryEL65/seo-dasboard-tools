@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { VisualMappingNetworkComponent } from './visual-mapping-network/visual-mapping-network.component';
 
 const VisualMappingNetworkRoutes: Routes = [
-  { path: 'visual-mapping', component: VisualMappingNetworkComponent, children: [
+  { path: '', component: VisualMappingNetworkComponent, children: [
     // { path: 'dashboard-level', component: SeoAuditToolComponent }
     ]
   },

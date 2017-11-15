@@ -12,7 +12,7 @@ import { AuthGuard } from '../../guards/authenticationGuard';
 const keywordOpportunityRoutes: Routes = [
     // tslint:disable-next-line:max-line-length
     // { path: 'keyword-opportunity', canActivate: [AuthGuard], canActivateChild: [AuthGuard], component: KeywordOpportunityDashboardComponent , children: [
-    { path: 'keyword-opportunity', component: KeywordOpportunityDashboardComponent , children: [
+    { path: '', component: KeywordOpportunityDashboardComponent , children: [
             { path: 'dashboard-level', component: KeywordOpportunityDashboardLevelComponent },
             { path: 'page-level', component: KeywordOpportunityPageLevelComponent },
             { path: 'keyword-level', component: KeywordOpportunityKeywordLevelComponent }

@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 /*---------------- angularFirebase -------------------*/
@@ -20,10 +22,14 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
 /*---------------- custom modules -------------------*/
 import { AuthenticationModule } from './components/authentication/authentication.module';
 import { AppRoutingModule } from './app-routing.module';
-import { KeywordOpportunityModule } from './components/keyword-opportunity/keyword-opportunity.module';
-import { SeoAuditToolModule } from './components/seo-audit-tool/seo-audit-tool.module';
-import { VisualMappingNetworkModule } from './components/visual-mapping-network/visual-mapping-network.module';
-import { LmsModule } from './components/lms/lms.module';
+
+/*====================== Lazy Loading Modules ==> Handled in app-routing.module ===============================
+// import { AdminModule } from './components/admin/admin.module';
+// import { KeywordOpportunityModule } from './components/keyword-opportunity/keyword-opportunity.module';
+// import { SeoAuditToolModule } from './components/seo-audit-tool/seo-audit-tool.module';
+// import { VisualMappingNetworkModule } from './components/visual-mapping-network/visual-mapping-network.module';
+// import { LmsModule } from './components/lms/lms.module';
+=================================================================================================================*/
 
 /*---------------- Shared modules -------------------*/
 import { SharedModule } from './components/shared/shared.module';
@@ -35,7 +41,6 @@ import { AppComponent } from './app.component';
 
 /*---------------- custom components ------------*/
 import { LoginComponent } from './components/authentication/login/login.component';
-// import { LogoutComponent } from './components/logout/logout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentAreaComponent } from './components/content-area/content-area.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -52,22 +57,18 @@ import { DropdownDirective } from './directives/dropdown.directive';
 
 /*================== environment variables ================*/
 import { environment } from './../environments/environment';
-import { AdminModule } from './components/admin/admin.module';
 
 /*=================== services ===========================*/
 import { UsersService } from './services/users.service';
-// import { AuthenticationService } from './services/authentication.service';
 
-// // /*=================== guard ===========================*/
-//  import { AuthGuard } from './guards/authenticationGuard';
-//  import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
+/*------------------ reducers -----------------------------*/
+import { authenticationReducer } from './components/authentication/store/authentication.reducers';
+import { reducers } from './store/app.reducers';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginComponent,
-    // LogoutComponent,
     HeaderComponent,
     FooterComponent,
     SideBarComponent,
@@ -76,24 +77,27 @@ import { UsersService } from './services/users.service';
     HomeComponent,
     PageNotFoundComponentComponent,
     ContentAreaComponent,
-    // SignUpComponent,
     ],
   imports: [
     BrowserModule,
-    // FormsModule,
     FlashMessagesModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    KeywordOpportunityModule,
-    SeoAuditToolModule,
-    VisualMappingNetworkModule,
-    LmsModule,
-    AdminModule,
+    AuthenticationModule,
+    /*===lazy loading modules
+    //implemented in app.routing.module ===
+    // KeywordOpportunityModule,n
+    // SeoAuditToolModule,
+    // VisualMappingNetworkModule,
+    // LmsModule,
+    // AdminModule,
+    ===========================*/
+    StoreModule.forRoot(reducers),
     SharedModule,
     Ng2BreadcrumbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'wp-dasboard-app'),
     AngularFireAuthModule,
-    AuthenticationModule
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [AngularFireDatabase, UsersService],
   bootstrap: [AppComponent]

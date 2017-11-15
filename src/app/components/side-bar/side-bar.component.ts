@@ -7,7 +7,7 @@ import { RouteInfo } from '../../models//RouteInfo';
 
 declare const $: any;
 export const ROUTES: RouteInfo[] = [
-  { path: '', title: 'Keword Opportunity' , icon: '',  class: 'fa fa-star' },
+  { path: 'keyword-opportunity', title: 'Keword Opportunity' , icon: '',  class: 'fa fa-star' },
   { path: 'seo-audit-tool',      title: 'SEO Audit Tool',      icon: '',  class: '' },
   { path: 'visual-mapping',      title: 'Visual Mapping',      icon: '',  class: '' },
   { path: 'lms',                 title: 'LMS',                 icon: '',  class: '' },

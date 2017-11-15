@@ -7,7 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const adminRoutes: Routes = [
-   { path: 'admin',  component: AdminComponent, children: [
+   { path: '',  component: AdminComponent, children: [
   //  { path: 'admin', canActivate: [AuthGuard], canActivateChild: [AuthGuard], component: AdminComponent, children: [
        { path: 'users', component: UsersComponent },
        { path: 'settings', component: SettingsComponent }

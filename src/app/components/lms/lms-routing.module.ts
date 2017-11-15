@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LmsComponent } from './lms/lms.component';
 
 const LmsRoutes: Routes = [
-  { path: 'lms', component: LmsComponent, children: [
+  { path: '', component: LmsComponent, children: [
     // { path: 'dashboard-level', component: SeoAuditToolComponent }
     ]
   },

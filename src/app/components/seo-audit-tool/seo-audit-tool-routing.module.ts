@@ -6,7 +6,7 @@ import { SeoAuditToolComponent } from './seo-audit-tool/seo-audit-tool.component
 
 
 const SeoAuditToolRoutes: Routes = [
-  { path: 'seo-audit-tool', component: SeoAuditToolComponent, children: [
+  { path: '', component: SeoAuditToolComponent, children: [
     // { path: 'dashboard-level', component: SeoAuditToolComponent }
     ]
   },

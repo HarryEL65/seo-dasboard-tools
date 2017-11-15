@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -8,13 +9,28 @@ import { FireBaseUserProfile } from '../models/fire-base-user-profile';
 @Injectable()
 export class AuthenticationService {
 
-  constructor(private afAuth: AngularFireAuth) { }
+  appToken: string;
+
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
     login( email: string, password: string ) {
       return new Promise((resolve, reject) => {
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
-          .then(userData => resolve(userData),
-        err => reject(err));
+          .then(
+            response => {
+              this.router.navigate(['']);
+              this.afAuth.auth.currentUser.getIdToken()
+                .then(
+                  (token: string) => {
+                    console.log(`======= token is: =============`, token );
+                    return this.appToken = token;
+                  }
+                );
+            }
+          ).
+          catch(
+            err => console.log(err)
+          );
       });
     }
     logout() {
