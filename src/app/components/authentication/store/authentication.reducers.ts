@@ -1,4 +1,5 @@
-  import * as AuthActions from './authentication.actions';
+import * as AuthActions from './authentication.actions';
+import { SET_TOKEN } from './authentication.actions';
 
 export interface State {
   appToken: string;
@@ -15,15 +16,21 @@ export function authenticationReducer(state = initialState, action: AuthActions.
     case (AuthActions.SIGNUP):
     case (AuthActions.LOGIN):
        return {
-           ...state,
+          ...state,
           isAuthenticated: true
        };
     case (AuthActions.LOGOUT):
        return {
            ...state,
-           token: null,
+           appToken: null,
            isAuthenticated: false
       };
+    case (AuthActions.SET_TOKEN):
+      return {
+          ...state,
+          appToken: action.payload,
+          isAuthenticated: false
+     };
     default:
       return state;
   }

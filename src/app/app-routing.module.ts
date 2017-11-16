@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './components/authentication/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+import { HomeComponent } from './components/core/home/home.component';
+import { PageNotFoundComponentComponent } from './components/core/page-not-found-component/page-not-found-component.component';
 
 const seoToolsDsbrdRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -31,7 +31,8 @@ const seoToolsDsbrdRoutes: Routes = [
   {
     path: 'admin',
     loadChildren: './components/admin/admin.module#AdminModule'
-  }
+  },
+  // { path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages/module';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../../services/authentication.service';
-import { RouteInfo } from '../../models//RouteInfo';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { RouteInfo } from '../../../models//RouteInfo';
 
 declare const $: any;
 export const ROUTES: RouteInfo[] = [

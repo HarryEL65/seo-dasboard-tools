@@ -1,29 +1,38 @@
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 // tslint:disable-next-line:import-blacklist
-import { Observable } from 'rxjs';
 import { FireBaseUserProfile } from '../models/fire-base-user-profile';
+import * as FromApp from '../store/app.reducers';
+import * as AuthActions from '../components/authentication/store/authentication.actions';
+import { AuthenticationActions } from '../components/authentication/store/authentication.actions';
+
 
 @Injectable()
 export class AuthenticationService {
 
   appToken: string;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth,
+              private router: Router,
+              private store: Store<FromApp.AppState>) { }
 
     login( email: string, password: string ) {
       return new Promise((resolve, reject) => {
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
           .then(
             response => {
+              this.store.dispatch(new AuthActions.Login());
               this.router.navigate(['']);
               this.afAuth.auth.currentUser.getIdToken()
                 .then(
                   (token: string) => {
                     console.log(`======= token is: =============`, token );
-                    return this.appToken = token;
+                    // return this.appToken = token;
+                    this.store.dispatch(new AuthActions.SetToken(token));
                   }
                 );
             }
@@ -35,12 +44,16 @@ export class AuthenticationService {
     }
     logout() {
       this.afAuth.auth.signOut();
+      this.store.dispatch(new AuthActions.Logout());
     }
     signupUser( email: string, password: string) {
       return new Promise((resolve, reject) => {
         this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-          .then(userData => resolve(userData),
-          err => reject(err));
+          .then(
+            // userData => resolve(userData),
+            // err => reject(err)
+            user => this.store.dispatch(new AuthActions.Signup())
+        );
       });
     }
     getAuthentication() {

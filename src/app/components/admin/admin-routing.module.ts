@@ -14,7 +14,7 @@ const adminRoutes: Routes = [
    ] },
    { path: '**', redirectTo: '/not-found'}
 ];
-
+  
 @NgModule({
   imports: [
     CommonModule,

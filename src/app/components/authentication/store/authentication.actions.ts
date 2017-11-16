@@ -5,7 +5,7 @@ export const LOGIN     = 'LOGIN';
 export const LOGOUT    = 'LOGOUT';
 export const SET_TOKEN = 'SET_TOKEN';
 
-export class Singup implements Action {
+export class Signup implements Action {
   readonly type = SIGNUP;
 }
 
@@ -25,7 +25,7 @@ export class SetToken implements Action {
 }
 
 export type AuthenticationActions  =
-    Singup |
+    Signup |
     Login |
     Logout |
     SetToken;

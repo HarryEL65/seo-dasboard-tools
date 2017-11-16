@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { BreadcrumbService } from 'ng2-breadcrumb/app/components/breadcrumbService';
 import { BreadcrumbNavComponent } from '../content-area/breadcrumb-nav/breadcrumb-nav.component';
 // import { BreadcrumbNavComponent}

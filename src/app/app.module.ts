@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
+// import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -20,6 +20,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
 
 /*---------------- custom modules -------------------*/
+import { CoreModule } from './components/core/core.module';
+
 import { AuthenticationModule } from './components/authentication/authentication.module';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -41,14 +43,7 @@ import { AppComponent } from './app.component';
 
 /*---------------- custom components ------------*/
 import { LoginComponent } from './components/authentication/login/login.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ContentAreaComponent } from './components/content-area/content-area.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { HomeComponent } from './components/home/home.component';
-import { BreadcrumbNavComponent } from './components/content-area/breadcrumb-nav/breadcrumb-nav.component';
-import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+
 
 /*---------------- custom directives -------------------*/
 import { DropdownDirective } from './directives/dropdown.directive';
@@ -63,20 +58,13 @@ import { UsersService } from './services/users.service';
 
 /*------------------ reducers -----------------------------*/
 import { authenticationReducer } from './components/authentication/store/authentication.reducers';
+
 import { reducers } from './store/app.reducers';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SideBarComponent,
-    UserProfileComponent,
-    BreadcrumbNavComponent,
-    HomeComponent,
-    PageNotFoundComponentComponent,
-    ContentAreaComponent,
+    AppComponent
     ],
   imports: [
     BrowserModule,
@@ -92,12 +80,15 @@ import { reducers } from './store/app.reducers';
     // LmsModule,
     // AdminModule,
     ===========================*/
-    StoreModule.forRoot(reducers),
     SharedModule,
-    Ng2BreadcrumbModule.forRoot(),
+    // Ng2BreadcrumbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'wp-dasboard-app'),
     AngularFireAuthModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    StoreDevtoolsModule.instrument(),
+    CoreModule,
+    /* registering the StoreModule */
+    // StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers),
   ],
   providers: [AngularFireDatabase, UsersService],
   bootstrap: [AppComponent]
