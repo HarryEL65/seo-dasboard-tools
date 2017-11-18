@@ -1,0 +1,4 @@
+@Eff
+export class AuthentificationEffects {
+
+}
