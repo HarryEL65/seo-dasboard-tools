@@ -1,8 +1,7 @@
 
  
   <seo-tls-dbrd-breadcrumb-nav *ngIf="isLoggedIn"></seo-tls-dbrd-breadcrumb-nav>
-  
-  <!-- <div id="main-router"> -->
+
   <div id="main-router" [ngClass]="{'remove-blank':!isLoggedIn}">
       <router-outlet ></router-outlet>
   </div>

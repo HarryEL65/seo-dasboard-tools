@@ -2,9 +2,9 @@
     "version": 3,
     "mappings": "AAEA,AAAA,UAAU,CAAA;EACR,gBAAgB,ECHG,SAAS;EDI5B,UAAU,EAAE,IAAI,CAAC,IAAI,CAAC,GAAG,CAAE,IAAG,CAAC,kBAAe;CAS/C;;AAXD,AAGE,UAHQ,CAGR,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,YAAY;CACxB;;AANJ,AAOE,UAPQ,CAOR,EAAE,CAAA;EACA,KAAK,EAAE,cAAc;EACrB,MAAM,EAAE,WAAW;CACpB",
     "sources": [
-        "login.component.scss",
+        "sign-up.component.scss",
         "../../../../sass/_variable.scss"
     ],
     "names": [],
-    "file": "login.component.css"
+    "file": "sign-up.component.css"
 }

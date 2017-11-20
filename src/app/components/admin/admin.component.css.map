@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,KAAK,CAAA;EACH,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,KAAK;EACd,UAAU,ECPS,MAAM;CDQ1B",
+    "mappings": "AAEA,AAAA,KAAK,CAAA;EACH,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,KAAK;EACd,UAAU,ECPS,SAAS;CDQ7B",
     "sources": [
         "admin.component.scss",
         "../../../sass/_variable.scss"

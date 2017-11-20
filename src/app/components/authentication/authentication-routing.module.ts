@@ -9,7 +9,6 @@ const authenticationRoutes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: '**', redirectTo: '/not-found'}
 ];
-
 @NgModule({
   imports: [
     RouterModule.forChild(authenticationRoutes)

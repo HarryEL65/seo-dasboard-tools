@@ -1,3 +1,23 @@
-<p>
-  sign-up works!
-</p>
+<div class="row">
+  <div class="col-xs-6 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="logo-ctnr">
+          <img class="d-block mx-auto" src="/assets/img/webpals-logo.png" alt="">
+        </div>
+        <h4 class="text-center" i18n="Header|An introduction header for this sample@@loginTitleId">SEO Dashboard Tools Signup</h4>
+        <form (ngSubmit)="onSignup(f)" #f="ngForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" ngModel class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" ngModel class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

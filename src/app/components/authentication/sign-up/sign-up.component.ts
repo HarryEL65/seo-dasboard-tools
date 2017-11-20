@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { AppState } from '../../../store/app.reducers';
 import * as fromApp from '../../../store/app.reducers';
-
 import * as AuthActions from '../store/authentication.actions';
 import { TRY_SIGNUP, TrySignup } from '../store/authentication.actions';
 
@@ -25,6 +24,8 @@ export class SignUpComponent implements OnInit {
   onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
+    // Dispatching the "TrySignup" action ==> the 'AuthentificationEffects' will 
+    // handle this action
     this.store.dispatch(new AuthActions.TrySignup({username: email, password: password}));
   }
 }

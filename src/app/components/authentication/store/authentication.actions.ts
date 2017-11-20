@@ -2,6 +2,9 @@
 import { ExpandOperator } from 'rxjs/operators/expand';
 import { Action } from '@ngrx/store';
 
+// for the TRY_SIGNUP we don't need to register a reducer for it because we 
+// don't want to update the state  in this case. We only need this action 
+// for the Effects
 export const TRY_SIGNUP = 'TRY_SIGNUP';
 export const SIGNUP    = 'SIGNUP';
 export const TRY_LOGIN = 'TRY_LOGIN';
@@ -29,9 +32,6 @@ export class Login implements Action {
   readonly type = LOGIN;
 }
 
-// export class TryLogout implements Action {
-//   readonly type = TRY_LOGOUT;
-// }
 export class Logout implements Action {
   readonly type = LOGOUT;
 }

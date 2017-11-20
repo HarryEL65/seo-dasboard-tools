@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages/module';
 import { AuthenticationService } from '../../../services/authentication.service';
 import * as fromApp from './../../../store/app.reducers';
 import * as fromAuthentication from '../../authentication/store/authentication.reducers';
+import * as AuthActions from '../../authentication/store/authentication.actions';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -43,12 +44,5 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
-
-    // this._flashMessagesService.show('you are logged out', {
-    //   cssClass: 'alert-success', timeout: 4000
-    // });
-    this.router.navigate(['/login']);
   }
-
-
 }

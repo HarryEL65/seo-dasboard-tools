@@ -2,12 +2,11 @@
   <div class="col-xs-6 mx-auto">
     <div class="card">
       <div class="card-body">
-        
         <div class="logo-ctnr">
           <img class="d-block mx-auto" src="/assets/img/webpals-logo.png" alt="">
         </div>
         <h4 class="text-center" i18n="Header|An introduction header for this sample@@loginTitleId">SEO Dashboard Tools Login</h4>
-        <form (submit)="onLogin()" #f>
+        <form (ngSubmit)="onLogin(f)" #f="ngForm">
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" 

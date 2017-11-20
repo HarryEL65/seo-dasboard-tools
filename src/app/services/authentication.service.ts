@@ -20,42 +20,44 @@ export class AuthenticationService {
               private router: Router,
               private store: Store<FromApp.AppState>) { }
 
-    login( email: string, password: string ) {
-      return new Promise((resolve, reject) => {
-        this.afAuth.auth.signInWithEmailAndPassword(email, password)
-          .then(
-            response => {
-              this.store.dispatch(new AuthActions.Login());
-              this.router.navigate(['']);
-              this.afAuth.auth.currentUser.getIdToken()
-                .then(
-                  (token: string) => {
-                    console.log(`======= token is: =============`, token );
-                    // return this.appToken = token;
-                    this.store.dispatch(new AuthActions.SetToken(token));
-                  }
-                );
-            }
-          ).
-          catch(
-            err => console.log(err)
-          );
-      });
-    }
+    // login(email: string, password: string) {
+    //   this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    //     .then(
+    //         response => {
+    //           this.store.dispatch(new AuthActions.Login());
+    //           this.afAuth.auth.currentUser.getToken()
+    //           .then(
+    //             (token: string) => {
+    //               this.store.dispatch(new AuthActions.SetToken(token))
+    //             }
+    //           )
+    //         }
+    //     )
+    //     .catch(
+    //       error => console.log(error)
+    //     );
+    //   };
+        
     logout() {
       this.afAuth.auth.signOut();
       this.store.dispatch(new AuthActions.Logout());
     }
-    signupUser( email: string, password: string) {
-      return new Promise((resolve, reject) => {
-        this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-          .then(
-            // userData => resolve(userData),
-            // err => reject(err)
-            user => this.store.dispatch(new AuthActions.Signup())
-        );
-      });
-    }
+    
+    // signupUser(email: string, password: string) {
+    //     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    //       .then(
+    //         user => {
+    //           this.store.dispatch(new AuthActions.Signup());
+    //           this.afAuth.auth.currentUser.getToken()
+    //           .then(
+    //             (token: string) => {
+    //               this.store.dispatch(new AuthActions.SetToken(token))
+    //             }
+    //           )
+    //         }
+    //     );
+    // };
+    
     getAuthentication() {
       return this.afAuth.authState.map( auth => auth );
     }

@@ -89,8 +89,12 @@ import { AuthentificationEffects } from './components/authentication/store/authe
     StoreDevtoolsModule.instrument(),
     CoreModule,
     /* registering the StoreModule */
-    // StoreModule.forRoot(reducers),
     StoreModule.forRoot(reducers),
+    // Registering the effects I want to control: here it is 
+    // the AuthenticationEffects (authentication.effects.ts)
+    //==> we are hooking up the AuthetificationEffects class to 
+    // to the EffectsModule so that @ngrx will be able to analyze our
+    // store and inject our actions into our Effects Classes
     EffectsModule.forRoot([AuthentificationEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 5
