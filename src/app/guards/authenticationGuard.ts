@@ -18,15 +18,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     .map((authState: fromAuth.State) => {
       return authState.isAuthenticated;
     });
-    // this.authService.getAuthentication().subscribe( auth => {
-    //   auth ? this.isLoggedIn = true : this.isLoggedIn = false;
-    // });
-    // if ( !this.isLoggedIn) {
-    //   this.router.navigate(['/login']);
-    // }else {
-    //   this.router.navigate(['/']);
-    // }
-    // return  this.isLoggedIn;
   }
 
   // tslint:disable-next-line:max-line-length

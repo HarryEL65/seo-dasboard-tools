@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages/module';
 import { Router } from '@angular/router';
 
+// TODO: Remove the the authentication service
 import { AuthenticationService } from '../../../services/authentication.service';
 import { RouteInfo } from '../../../models//RouteInfo';
 
@@ -51,7 +52,7 @@ export class SideBarComponent implements OnInit {
       } else {
         this.isLoggedIn = false;
       }
-    // });
+
   }
   isMobileMenu() {
       if ($(window).width() > 991) {
