@@ -1,3 +1,4 @@
+
 import {Store} from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages/module';
@@ -33,18 +34,14 @@ export class SideBarComponent implements OnInit {
 
   menuItems: any[];
 
-  constructor( private store: Store<fromApp.AppState> ,
+  constructor( private authService: AuthenticationService,
     private router: Router,
     private _flashMessagesService: FlashMessagesService ) { }
 
   ngOnInit() {
-    // this.authService.getAuthentication().subscribe( auth => {
-      this.store.select('authenticationSlice')
-      .map((authState: fromAuth.State) => {
-        return authState.isAuthenticated;
-      })
+     this.authService.getAuthentication().subscribe( auth => {
 
-      if ( this.store.select('authenticationSlice').) {
+      if ( auth ) {
         this.isLoggedIn = true;
         this.LoggdedInUser = auth.email;
 
@@ -52,7 +49,7 @@ export class SideBarComponent implements OnInit {
       } else {
         this.isLoggedIn = false;
       }
-
+    });
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

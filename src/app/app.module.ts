@@ -7,8 +7,12 @@ import { NgModule } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 // import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
-import { StoreModule } from '@ngrx/store';
+
 import { EffectsModule } from '@ngrx/effects';
+
+import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
@@ -63,6 +67,12 @@ import { authenticationReducer } from './components/authentication/store/authent
 import { reducers } from './store/app.reducers';
 import { AuthentificationEffects } from './components/authentication/store/authentication.effects';
 
+// const reducers: ActionReducerMap<IState> = {todos, visibilityFilter};
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['isAuthenticated']})(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -89,10 +99,10 @@ import { AuthentificationEffects } from './components/authentication/store/authe
     StoreDevtoolsModule.instrument(),
     CoreModule,
     /* registering the StoreModule */
-    StoreModule.forRoot(reducers),
-    // Registering the effects I want to control: here it is 
+    StoreModule.forRoot(reducers, {metaReducers}),
+    // Registering the effects I want to control: here it is
     // the AuthenticationEffects (authentication.effects.ts)
-    //==> we are hooking up the AuthetificationEffects class to 
+    // ==> we are hooking up the AuthetificationEffects class to
     // to the EffectsModule so that @ngrx will be able to analyze our
     // store and inject our actions into our Effects Classes
     EffectsModule.forRoot([AuthentificationEffects]),

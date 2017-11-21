@@ -20,6 +20,8 @@ export class TrySignup implements Action {
 }
 export class Signup implements Action {
   readonly type = SIGNUP;
+
+  // constructor(public payload: {username: string, password: string}) {}
 }
 
 export class TryLogin implements Action {
@@ -30,6 +32,8 @@ export class TryLogin implements Action {
 
 export class Login implements Action {
   readonly type = LOGIN;
+
+  // constructor(public payload: {username: string, password: string}) {}
 }
 
 export class Logout implements Action {

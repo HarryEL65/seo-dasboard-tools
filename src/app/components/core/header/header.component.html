@@ -5,10 +5,10 @@
           </a>
       </li>
     </div>
-    <!-- <pre>{{(authenticationState | async).isAuthenticated }}</pre> -->
-    <!-- <div class="login-logout float-right">  -->
-    <div *ngIf="(authenticationState | async).isAuthenticated; else notLoggedIn" class="login-logout float-right"> 
-      <div class="login-logout float-right"> 
+    <div class="login-logout float-right">  
+        <!-- <div *ngIf="(authenticationState | async).isAuthenticated; else notLoggedIn" class="login-logout float-right">  -->
+                <pre>{{(authenticationState | async).isAuthenticated}}</pre>
+            <div class="login-logout float-right"> 
         <a   class="mr-3" href="#">{{loggdedInUser}}</a>
         <a   routerLink="logout" (click)="onLogout()">Logout</a>
       </div>

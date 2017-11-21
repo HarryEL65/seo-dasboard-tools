@@ -9,7 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages/module';
 import { AuthenticationService } from '../../../services/authentication.service';
 import * as fromApp from './../../../store/app.reducers';
 import * as fromAuthentication from '../../authentication/store/authentication.reducers';
-import * as AuthActions from '../../authentication/store/authentication.actions';
+// import * as AuthActions from '../../authentication/store/authentication.actions';
 
 @Component({
   // tslint:disable-next-line:component-selector

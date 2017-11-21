@@ -75,8 +75,8 @@ export class AuthentificationEffects {
          type: AuthActions.SIGNUP
        },
        {
-        type: AuthActions.SET_TOKEN,
-        payload: token
+          type: AuthActions.SET_TOKEN,
+          payload: token
        }
      ];
    });

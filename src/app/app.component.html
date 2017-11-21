@@ -1,6 +1,6 @@
 <seo-tls-dbrd-header></seo-tls-dbrd-header>
 
-<seo-tls-dbrd-side-bar></seo-tls-dbrd-side-bar>
+<seo-tls-dbrd-side-bar *ngIf="(authenticationState | async).isAuthenticated"></seo-tls-dbrd-side-bar>
 
 <content-area></content-area>
 
