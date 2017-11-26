@@ -8,6 +8,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
+// tslint:disable-next-line:import-blacklist
+import { Observable } from 'rxjs/Observable';
+
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -28,8 +31,9 @@ export class AuthentificationEffects {
   // the 'ofType' method allow us to check if the action that is occuring is
   // of a certain type and will allow to continue the execution of the code
   // only if it is of the specified action type.
-  // in this case we onlu want to execute the code when we are trying to signup (TRY_SIGNUP)
+  // in this case we only want to execute the code when we are trying to signup (TRY_SIGNUP)
    .ofType(AuthActions.TRY_SIGNUP)
+   .debug('AuthActions.TRY_SIGNUP - debug')
   // So the furthers operators we chain here will only get executed if the
   // 'TRY_SIGNUP' action is dispatched from anywhere in our application
   // As in any reducer the relevant action will be handled here,
@@ -55,6 +59,7 @@ export class AuthentificationEffects {
      // The rxjs library provides a convenient method wich allow to do the conversion.
       return fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(authData.username, authData.password));
    })
+  //  .debug('map - action: AuthActions.TrySignup')
    // The following chaine switchMap will be called whenever the previous one return a value
    // but since we are not interested in its value switchMap(() => .....)
    // we want to dispatch an action and to fetch the token
@@ -80,9 +85,11 @@ export class AuthentificationEffects {
        }
      ];
    });
+
    @Effect()
    authLogin = this.actions$
     .ofType(AuthActions.TRY_LOGIN)
+    .debug('just after => .ofType(AuthActions.TRY_LOGIN)')
     .map((action: AuthActions.TryLogin) => {
       return action.payload;
     })
@@ -92,6 +99,7 @@ export class AuthentificationEffects {
     .switchMap(() => {
       return fromPromise(this.afAuth.auth.currentUser.getIdToken());
     })
+    // .debug('just after => .switchMap(()')
     .mergeMap( (token: string ) => {
       this.router.navigate(['/']);
       return [
@@ -108,9 +116,11 @@ export class AuthentificationEffects {
     @Effect({dispatch: false})
     authLogout = this.actions$
     .ofType(AuthActions.LOGOUT)
+    .debug('just after => AuthActions.LOGOUT')
     .do(() => {
       this.router.navigate(['/login']);
-    });
+    })
+    .debug('just after => this.router.navigate([/login])');
 
 
  // add a private property 'actions$' of type 'Actions' from the @ngrx/effects

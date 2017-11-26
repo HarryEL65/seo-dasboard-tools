@@ -1,8 +1,10 @@
+import { Component } from '@angular/core';
 
 /*=============== Modules ==================*/
 
 /*---------------- Angular and third parties modules -------------------*/
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
@@ -66,13 +68,14 @@ import { authenticationReducer } from './components/authentication/store/authent
 
 import { reducers } from './store/app.reducers';
 import { AuthentificationEffects } from './components/authentication/store/authentication.effects';
+import { TodoEffects } from './components/testEffect/todo.effect'
 
 // const reducers: ActionReducerMap<IState> = {todos, visibilityFilter};
 
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({keys: ['isAuthenticated']})(reducer);
-}
-const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+// export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+//   return localStorageSync({keys: ['isAuthenticated']})(reducer);
+// }
+// const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -80,6 +83,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FlashMessagesModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
@@ -99,7 +103,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     StoreDevtoolsModule.instrument(),
     CoreModule,
     /* registering the StoreModule */
-    StoreModule.forRoot(reducers, {metaReducers}),
+    // StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot(reducers),
+    
+
     // Registering the effects I want to control: here it is
     // the AuthenticationEffects (authentication.effects.ts)
     // ==> we are hooking up the AuthetificationEffects class to

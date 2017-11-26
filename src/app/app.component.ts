@@ -3,6 +3,8 @@ import * as fromApp from './store/app.reducers';
 import * as fromAuthentication from './components/authentication/store/authentication.reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+// import { loadState, saveState } from './localStorage';
+
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,9 @@ export class AppComponent implements OnInit {
   title = 'app';
   constructor( private store: Store<fromApp.AppState>) {}
   ngOnInit() {
-      this.authenticationState = this.store.select('authenticationSlice');
+      // this.store.select('authenticationSlice')
+      // .subscribe( state => {
+      //   loadState();
+      // });
   }
 }
