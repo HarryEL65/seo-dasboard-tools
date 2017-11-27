@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Effect, toPayload, Actions } from '@ngrx/effects'
+import { Effect, toPayload, Actions } from '@ngrx/effects';
+
+import { TodosService } from './../../services/todos.service';
+
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -30,20 +33,20 @@ export class TodoEffects {
        So, you can return multiple actions that 
        you want just like this. */
     .mergeMap(payload => {
-      return this.http$
-           .get('/todos')
-           .map(data => {
+      return this.todoSrv.getTodos()
+            .map(data => {
              return [
                new Act.TodoSuccess({ data: data })
              ]
            })
            .catch((error) => {
              return [
-               new Act.TodoFail({error: error})
+               new Act.TodoFail({ error: error })
              ]
            })
     })
+    .debug('Just After  = mergeMap(payload => {')
 
-  constructor(private action$: Actions,private http$: HttpClient) {}
+  constructor(private action$: Actions,private http$: HttpClient, private todoSrv: TodosService) {}
   
 }

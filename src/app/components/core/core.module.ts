@@ -27,7 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     PageNotFoundComponentComponent,
     ContentAreaComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     SharedModule,

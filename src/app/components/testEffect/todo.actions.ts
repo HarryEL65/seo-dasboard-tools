@@ -6,7 +6,7 @@ export const TODO_FAIL = 'TODO_FAIL';
 
 export class Todo implements Action{
   readonly type = TODO;
-
+  
   constructor() {}
 }
 

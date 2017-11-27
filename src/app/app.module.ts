@@ -62,13 +62,18 @@ import { environment } from './../environments/environment';
 
 /*=================== services ===========================*/
 import { UsersService } from './services/users.service';
+import { TodosService } from './services/todos.service';
 
 /*------------------ reducers -----------------------------*/
 import { authenticationReducer } from './components/authentication/store/authentication.reducers';
 
 import { reducers } from './store/app.reducers';
 import { AuthentificationEffects } from './components/authentication/store/authentication.effects';
-import { TodoEffects } from './components/testEffect/todo.effect'
+import { TodoEffects } from './components/testEffect/todo.effect';
+import { Todo } from './components/testEffect/todo.component';
+import { Todos } from './components/testEffect/todos.component';
+
+
 
 // const reducers: ActionReducerMap<IState> = {todos, visibilityFilter};
 
@@ -79,7 +84,9 @@ import { TodoEffects } from './components/testEffect/todo.effect'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Todo,
+    Todos,
     ],
   imports: [
     BrowserModule,
@@ -112,12 +119,12 @@ import { TodoEffects } from './components/testEffect/todo.effect'
     // ==> we are hooking up the AuthetificationEffects class to
     // to the EffectsModule so that @ngrx will be able to analyze our
     // store and inject our actions into our Effects Classes
-    EffectsModule.forRoot([AuthentificationEffects]),
+    EffectsModule.forRoot([AuthentificationEffects, TodoEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 5
     })
   ],
-  providers: [AngularFireDatabase, UsersService],
+  providers: [AngularFireDatabase, UsersService, TodosService],
   bootstrap: [AppComponent]
-})
+})      
 export class AppModule { }

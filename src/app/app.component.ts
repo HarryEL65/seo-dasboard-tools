@@ -4,6 +4,8 @@ import * as fromAuthentication from './components/authentication/store/authentic
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 // import { loadState, saveState } from './localStorage';
+import { Todo } from './components/testEffect/todo.actions';
+
 
 
 @Component({
@@ -13,12 +15,15 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
   authenticationState: Observable<fromAuthentication.State>;
+  todos: Observable<any>;
   title = 'app';
-  constructor( private store: Store<fromApp.AppState>) {}
+  
+  constructor( private store: Store<fromApp.AppState>) {
+    this.store.dispatch(new Todo);
+    this.todos = store.select('todoSlice');
+  }
   ngOnInit() {
-      // this.store.select('authenticationSlice')
-      // .subscribe( state => {
-      //   loadState();
-      // });
+      
+         
   }
 }
